@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>OLLE LOMBERG DAVEGÅRD</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="index.html" class="image avatar"><img src="images/portrait2.jpg" alt="" /></a>
+			<h1><strong>Olle <br> Lomberg Davegård</strong>
+			</h1>
+			<br>
+			<div class="aboutMe">
+
+				<p id="firstAbout">INTERACTION DESIGNER <br>LINNÈUNIVERSITETET</p>
+				<br>
+
+				<h3 class="icon solid fa-envelope"><a href="mailto:olledavegardh@gmail.com"> olledavegardh@gmail.com</a></h3>
+				<h3 class="icon solid fa-mobile-alt"><a href="tel:+46707875298"> +46707875298</a></h3>
+				<h3 class="icon brands fa-linkedin"><a href="http://linkedin.com/in/olleld"> linkedin.com/in/olleld</a></h3>
+			</div>
+		</div>
+	</header>
+
+	<div class="line-container">
+		<svg id="wiggleSVG" viewBox="0 0 100 1000" preserveAspectRatio="xMidYMid slice">
+			<path id="wigglePath" d="" />
+		</svg>
+	</div>
+
+	<script>
+		const path = document.getElementById("wigglePath");
+		const numPoints = 230; // Controls smoothness of the curve
+		const pathHeight = 1000;
+		let wiggleAmount = 0;
+		let targetWiggle = 0;
+		let scrollSpeed = 0;
+		let lastScrollY = window.scrollY;
+
+		// Perlin noise function approximation (smooth, no jitter)
+		function perlinNoise(x) {
+			return Math.sin(x * 0.1) * 10 + Math.sin(x * 0.05) * 5;
+		}
+
+		function generatePath(amount) {
+			let points = [];
+			for (let i = 0; i < numPoints; i++) {
+				let wave = perlinNoise(i + performance.now() / 30); // Large smooth waves
+				let x = 50 + wave * amount;
+				let y = (i / (numPoints - 1)) * pathHeight;
+				points.push(`${x},${y}`);
+			}
+			path.setAttribute("d", `M${points.join(" L")}`);
+		}
+
+		function animate() {
+			// Gradual transition
+			wiggleAmount += (targetWiggle - wiggleAmount) * 0.02;
+			generatePath(wiggleAmount);
+			requestAnimationFrame(animate);
+		}
+
+		// Start animation loop
+		animate();
+
+		window.addEventListener("scroll", () => {
+			let deltaY = Math.abs(window.scrollY - lastScrollY);
+			lastScrollY = window.scrollY;
+
+			scrollSpeed = deltaY; // Use scroll speed to adjust wiggle
+			targetWiggle = Math.min(scrollSpeed / 5, 4); // Limit wave intensity
+			clearTimeout(scrollSpeed);
+
+			scrollSpeed = setTimeout(() => {
+				targetWiggle = 0; // Smoothly return to straight line
+			}, 300);
+		});
+	</script>
+
+
+	<!-- Main -->
+	<div id="main">
+
+		<!-- One -->
+		<section id="one">
+			<div class="text-container">
+				<a href="index.html">
+					<span class="material-symbols-sharp back-arrow">
+						arrow_back
+					</span>
+					<h1><strong>OriginStory</strong></h1>
+				</a>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two">
+			<h4><strong>2023, 10 weeks</strong></h4>
+
+
+
+
+
+			<iframe src="https://player.vimeo.com/video/932809964?h=7ecd76826f" width="960" height="540" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms" class="videoSize"></iframe>
+			<div class="theProject">
+
+				<div class="aboutProject">
+					<div class="project">
+						<h3>Project Brief</h3>
+						<p>This project aimed to develop OriginStory, a browser extension designed to empower news consumers with a deeper understanding of news narratives.</p>
+
+						<h3>The Problem</h3>
+						<p>The modern news landscape is complex and often fragmented. Consumers struggle to track the evolution of news stories, identify bias, and discern the credibility of information.</p>
+
+						<h3>The Goal</h3>
+						<p>The goal was to create a user-friendly tool that allows news consumers to explore the relationships between different news sources covering the same story.</p>
+					</div>
+					<div class="team">
+						<h4>Team</h4>
+						<p>This project was done individually.</p>
+						<h4>Tools</h4>
+						<p>Figma</p>
+					</div>
+
+				</div>
+
+
+				<div class="theprocess">
+
+					<h2>The Process</h2>
+					<p>The main focus for this project was to understand certain interface patterns and integrate them into a fictional service, therefore was no extensive user research or testing with real users to be done.</p>
+
+					<h3>User Research</h3>
+					<h4>Brainstorming</h4>
+					<p>With a description of the service provided by our teacher I began to brainstorm about what users could benefit from this service.
+						After this session I discussed the result with my teacher and two of my classmates.
+						During this session I also brainstormed around different needs and certain functions the service could have. It also resulted with three simple persona descriptions.</p>
+
+					<h4>Target Group</h4>
+					<p>The primary target audience has been news consumers, this is a diverse audience that consists of a lot of other different people in different fields. My focus has been to provide a tool that is available for ‘regular’ people that consume news online, but the service is certainly relevant to journalists, researchers, fact checkers, as well.</p>
+					<p>
+						By catering to regular people who consume news online, OriginStory ensures accessibility for individuals with varying levels of familiarity with news analysis tools. Whether you are a casual news reader or a professional journalist, OriginStory offers a user-friendly experience that promotes critical analysis.</p>
+					<p>In summary, while the primary target remains news consumers, OriginStory functions as a tool for a broader audience, including journalists, researchers, and anyone interested in gaining a deeper understanding of how news stories evolve over time.</p>
+				</div>
+
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="/images/originstory/Brainstorm_users.png" alt="">
+					</label>
+					<p>Brainstorming around users along with their needs and features that they would want.</p>
+				</div>
+
+
+
+
+				<h3>Design</h3>
+				<h4>Sketches</h4>
+				<p>I started out with sketching a low fidelity design of the service and from these sketches I could recognize certain interface patterns. After these patterns emerged I translated my sketches into wireframes in Figma so I could get a better understanding of the layout and further make some improvements in the design.</p>
+				<p>While sketching the main page I also sketched variations on the 'filter box', as shown below.
+					These sketches eventually also turned into a wireframes, also shown below.</p>
+
+
+
+
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="/images/originstory/skisser.png" alt="">
+					</label>
+					<p>A dashboard interface pattern started to emerge. <br>
+						Different variations on some sort of 'filter section'.</p>
+				</div>
+
+
+
+
+
+
+
+				<h4>Wireframes</h4>
+
+				<p>While creating the wireframes I could recognize two interface patterns in my design that I tried to expand on, the two patterns are: </p>
+
+				<strong>- Dashboard View</strong> <br>
+
+				<p>This pattern provides a central or 'main' location for users to access key information and features. In OriginStory, this view displays the map of interconnected news sources.</p>
+				<strong>- Canvas Plus Palette</strong> <br>
+
+				<p>This pattern structures the interface with a central workspace (the canvas) and surrounding tools (the palette) used to manipulate the content in the canvas.
+					In OriginStory, the map view acts as the canvas, and the filter panel acts as the palette for refining the view.</p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="/images/originstory/Wireframes_Main.png" alt="">
+					</label>
+					<p>A dashboard and canvas plus palette inspired interface pattern started to emerge.</p>
+				</div>
+
+
+				<h4>Interactive prototype</h4>
+				<p>The “main” page of OriginStory let users see a condensed but comprehensive view of key information in the form of a map-view. This view allows users to navigate interconnected nodes of news stories in an efficient and visual way.</p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="/images/originstory/interactive1.png" alt="">
+					</label>
+					<p>Main page / Dashboard</p>
+				</div>
+
+				<p>Opening a node provides the user with information regarding that specific node and also lets the user comment the node or upvote/downvote other users comments.</p>
+
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="/images/originstory/interactive2.png" alt="">
+					</label>
+				</div>
+
+
+				<p>Clicking the filter button provides the user with different filters they can apply to further narrow down their search or find certain aspects or angles in their research of news stories.</p>
+
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="/images/originstory/interactive3.png" alt="">
+					</label>
+				</div>
+
+				<p>While creating the interactive prototype I also integrated two other interface patterns, those were: <br>
+					<strong>- Animated Transitions</strong> <br>
+					This pattern utilizes subtle animations to enhance user experience and provide feedback during interactions. Some transitions in OriginStory i've added animations to are hover states, selection states, and zooming within the map view.
+				</p>
+
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="/images/originstory/animatedtrans.gif" alt="">
+					</label>
+				</div>
+
+				<p><strong>- Spinners and Loading Indicators</strong> <br>
+					This pattern provides visual cues to users when the system is processing information or loading content. In OriginStory have I included a spinner animation when users apply filters to the map view.
+				</p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="/images/originstory/spinners.gif" alt="">
+					</label>
+				</div>
+
+
+				<h3>Aestethics</h3>
+				<p>OriginStory's aesthetic design blends the image of traditional newspapers with the off-white background, reminiscent of aged paper, and the off-black text to ensure a color palette for a minimalistic and readable interface.</p>
+				<p>These design choices aims to make OriginStory’s users to easily be able to grasp the service, and create a sense of professionalism and efficiency. I also made these choices to make the user feel that the service is almost a part of the browser's core functionality.</p>
+				<p>The logo consists of the bold letters “OS” that have different parts interconnected, this is meant to symbolize the connectivity of the different news sources. The intentional separation within the different parts of the logo is meant to reflect that not all sources are connected or they might be so far off from its original source that it is almost separated from the news story completely, by for instance a total shift in terminology or tone. </p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="/images/originstory/Logo.png" alt="">
+					</label>
+				</div>
+
+
+
+
+				<p>For a walkthrough of the prototype, please go back to video at the top of the page! :)</p>
+
+
+
+				<h1>Thank you for your time!</h1>
+			</div>
+		</section>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="copyright">
+				<li>&copy; Olle Lomberg Davegård</li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
