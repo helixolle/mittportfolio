@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>OLLE LOMBERG DAVEGÅRD</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="index.html" class="image avatar"><img src="images/portrait2.jpg" alt="" /></a>
+			<h1><strong>Olle <br> Lomberg Davegård</strong>
+			</h1>
+			<br>
+			<div class="aboutMe">
+
+				<p id="firstAbout">INTERACTION DESIGNER <br>LINNÈUNIVERSITETET</p>
+				<br>
+
+				<h3 class="icon solid fa-envelope"><a href="mailto:olledavegardh@gmail.com"> olledavegardh@gmail.com</a></h3>
+				<h3 class="icon solid fa-mobile-alt"><a href="tel:+46707875298"> +46707875298</a></h3>
+				<h3 class="icon brands fa-linkedin"><a href="http://linkedin.com/in/olleld"> linkedin.com/in/olleld</a></h3>
+			</div>
+		</div>
+	</header>
+
+	<div class="line-container">
+		<svg id="wiggleSVG" viewBox="0 0 100 1000" preserveAspectRatio="xMidYMid slice">
+			<path id="wigglePath" d="" />
+		</svg>
+	</div>
+
+	<script>
+		const path = document.getElementById("wigglePath");
+		const numPoints = 230; // Controls smoothness of the curve
+		const pathHeight = 1000;
+		let wiggleAmount = 0;
+		let targetWiggle = 0;
+		let scrollSpeed = 0;
+		let lastScrollY = window.scrollY;
+
+		// Perlin noise function approximation (smooth, no jitter)
+		function perlinNoise(x) {
+			return Math.sin(x * 0.1) * 10 + Math.sin(x * 0.05) * 5;
+		}
+
+		function generatePath(amount) {
+			let points = [];
+			for (let i = 0; i < numPoints; i++) {
+				let wave = perlinNoise(i + performance.now() / 30); // Large smooth waves
+				let x = 50 + wave * amount;
+				let y = (i / (numPoints - 1)) * pathHeight;
+				points.push(`${x},${y}`);
+			}
+			path.setAttribute("d", `M${points.join(" L")}`);
+		}
+
+		function animate() {
+			// Gradual transition
+			wiggleAmount += (targetWiggle - wiggleAmount) * 0.02;
+			generatePath(wiggleAmount);
+			requestAnimationFrame(animate);
+		}
+
+		// Start animation loop
+		animate();
+
+		window.addEventListener("scroll", () => {
+			let deltaY = Math.abs(window.scrollY - lastScrollY);
+			lastScrollY = window.scrollY;
+
+			scrollSpeed = deltaY; // Use scroll speed to adjust wiggle
+			targetWiggle = Math.min(scrollSpeed / 5, 4); // Limit wave intensity
+			clearTimeout(scrollSpeed);
+
+			scrollSpeed = setTimeout(() => {
+				targetWiggle = 0; // Smoothly return to straight line
+			}, 300);
+		});
+	</script>
+
+
+	<!-- Main -->
+	<div id="main">
+
+		<!-- One -->
+		<section id="one">
+			<div class="text-container">
+				<a href="index.html">
+					<span class="material-symbols-sharp back-arrow">
+						arrow_back
+					</span>
+					<h1><strong>2Gether2.0</strong></h1>
+				</a>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two">
+			<h4><strong>2023, 10 weeks</strong></h4>
+
+
+
+
+
+			<iframe src="https://player.vimeo.com/video/937755072?h=dd5f2df5ee" width="960" height="540" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms" class="videoSize"></iframe>
+			<div class="theProject">
+
+				<div class="aboutProject">
+					<div class="project">
+						<h3>Project Brief</h3>
+						<p>2Gether2.0 is a platform designed to empower digital creators by providing a fair and transparent environment for them to share their work and receive proper recognition and compensation.</p>
+
+						<h3>The Problem</h3>
+						<p>Many online platforms fail to provide digital creators with fair compensation for their work. Creators often struggle to gain recognition and build a sustainable income.</p>
+
+						<h3>The Goal</h3>
+						<p>The goal of this project was to design a user-friendly and intuitive mobile app for 2Gether2.0 that empowers digital creators and fosters a supportive community.</p>
+					</div>
+					<div class="team">
+						<h4>Team</h4>
+						<p>Project done individually. <br> I was responsible for all aspects of the design process.</p>
+						<h4>Tools</h4>
+						<p><span class="pillBG">Figma</span>
+							<span class="pillBG">Pen&Paper</span>
+						</p>
+					</div>
+
+				</div>
+
+
+				<div class="theprocess">
+
+					<h2>The Process</h2>
+					<p>The main focus for this project was to understand certain interface patterns and integrate them into a fictional service, therefore was no extensive user research or testing with real users to be done.</p>
+
+					<h3>User Research</h3>
+					<h4>Persona</h4>
+					<p>A persona named Johanna Norberg was created to represent the target audience - a UX design student who creates and shares digital content.</p>
+
+
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="/images/2gether/Persona.png" alt="">
+						</label>
+					</div>
+
+
+
+					<h4>Context Scenarios</h4>
+					<p>Three scenarios were developed to explore how Johanna would use the 2Gether2.0 app: finding a 3D modeling course, uploading a painting, and starting a new photo project.</p>
+
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="/images/2gether/scenario.png" alt="">
+						</label>
+					</div>
+
+
+					<h3>Design</h3>
+					<h4>Sketches</h4>
+					<p>I started out by sketching the main page for each context scenario. The sketches shown below are iterations of many discarded sketches.</p>
+
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="/images/2gether/Sketches.png" alt="">
+						</label>
+					</div>
+
+
+
+					<h4>Paper prototype</h4>
+					<p>I created an 'interactive' paper prototype out of a spiral bound sketch book that had the approximate size of a smartphone. I tried to create this prototype to be as "reusable" as possible, meaning that my different scenarios crossed each other and therefore could several pages be resuable in the prototype. Making it interactive enough to get a better sense of how the service would work.</p>
+
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="/images/2gether/Paper_prototype.png" alt="">
+						</label>
+					</div>
+
+<p>Here are three videos going through each scenario using the paper prototype (in swedish).</p>
+
+
+<iframe src="https://player.vimeo.com/video/936205652?h=e2a7e49fea" width="960" height="540" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms" class="videoSize"></iframe>
+
+
+
+<iframe src="https://player.vimeo.com/video/936223340?h=ab04687939" width="960" height="540" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms" class="videoSize"></iframe>
+
+
+<iframe src="https://player.vimeo.com/video/936229681?h=bf5a524107" width="960" height="540" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms" class="videoSize"></iframe>
+
+
+
+
+					<h4>Wireframes</h4>
+
+					<p>Based on the paper prototype I created wireframes where some smaller adjustments have been done in comparison with the paper prototype. These were mainly around placements of buttons and captions. </p>
+
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="/images/2gether/wireframes.png" alt="">
+						</label>
+						<p>Wireframes made in Figma.</p>
+					</div>
+
+
+					<h4>Mockup</h4>
+					<p>In this phase I created four mockups for key pages of 2Gether2.0: the homepage, search results page, product page, and profile page. The aim was to establish a modern and consistent design that aligns with the target audience's needs.</p>
+
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="/images/2gether/mockup.png" alt="">
+						</label>
+						<p>Graphical mockups for key pages made in Figma.</p>
+					</div>
+
+					<h4>Interactive prototype</h4>
+					<p>Building from the wireframes and mockups, an interactive prototype was created. This prototype allows users to experience core functionalities like searching, filtering, and navigating the app. By enacting the context scenarios within the prototype, I could validate the user flow and ensure a smooth and intuitive experience.</p>
+
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="/images/2gether/interactive.png" alt="">
+						</label>
+						<p>Screenshots of the interactive prototype made in Figma.</p>
+					</div>
+
+					
+
+
+
+
+					<p>For a more thorough walkthrough, please watch the video at the top of this page! :)</p>
+
+
+
+					<h1>Thank you for your time!</h1>
+				</div>
+		</section>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="copyright">
+				<li>&copy; Olle Lomberg Davegård</li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
