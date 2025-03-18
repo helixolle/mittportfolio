@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>OLLE LOMBERG DAVEGÅRD</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="index.html" class="image avatar"><img src="images/portrait2.jpg" alt="" /></a>
+			<h1><strong>Olle <br> Lomberg Davegård</strong>
+			</h1>
+			<br>
+			<div class="aboutMe">
+
+				<p id="firstAbout">INTERACTION DESIGNER <br>LINNÈUNIVERSITETET</p>
+				<br>
+
+				<h3 class="icon solid fa-envelope"><a href="mailto:olledavegardh@gmail.com"> olledavegardh@gmail.com</a></h3>
+				<h3 class="icon solid fa-mobile-alt"><a href="tel:+46707875298"> +46707875298</a></h3>
+				<h3 class="icon brands fa-linkedin"><a href="http://linkedin.com/in/olleld"> linkedin.com/in/olleld</a></h3>
+			</div>
+		</div>
+	</header>
+
+	<div class="line-container">
+		<svg id="wiggleSVG" viewBox="0 0 100 1000" preserveAspectRatio="xMidYMid slice">
+			<path id="wigglePath" d="" />
+		</svg>
+	</div>
+
+	<script>
+		const path = document.getElementById("wigglePath");
+		const numPoints = 230; // Controls smoothness of the curve
+		const pathHeight = 1000;
+		let wiggleAmount = 0;
+		let targetWiggle = 0;
+		let scrollSpeed = 0;
+		let lastScrollY = window.scrollY;
+
+		// Perlin noise function approximation (smooth, no jitter)
+		function perlinNoise(x) {
+			return Math.sin(x * 0.1) * 10 + Math.sin(x * 0.05) * 5;
+		}
+
+		function generatePath(amount) {
+			let points = [];
+			for (let i = 0; i < numPoints; i++) {
+				let wave = perlinNoise(i + performance.now() / 30); // Large smooth waves
+				let x = 50 + wave * amount;
+				let y = (i / (numPoints - 1)) * pathHeight;
+				points.push(`${x},${y}`);
+			}
+			path.setAttribute("d", `M${points.join(" L")}`);
+		}
+
+		function animate() {
+			// Gradual transition
+			wiggleAmount += (targetWiggle - wiggleAmount) * 0.02;
+			generatePath(wiggleAmount);
+			requestAnimationFrame(animate);
+		}
+
+		// Start animation loop
+		animate();
+
+		window.addEventListener("scroll", () => {
+			let deltaY = Math.abs(window.scrollY - lastScrollY);
+			lastScrollY = window.scrollY;
+
+			scrollSpeed = deltaY; // Use scroll speed to adjust wiggle
+			targetWiggle = Math.min(scrollSpeed / 5, 4); // Limit wave intensity
+			clearTimeout(scrollSpeed);
+
+			scrollSpeed = setTimeout(() => {
+				targetWiggle = 0; // Smoothly return to straight line
+			}, 300);
+		});
+	</script>
+
+
+	<!-- Main -->
+	<div id="main">
+
+		<!-- One -->
+		<section id="one">
+			<div class="text-container">
+				<a href="index.html">
+					<span class="material-symbols-sharp back-arrow">
+						arrow_back
+					</span>
+					<h1><strong>ParkEasy</strong></h1>
+				</a>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two">
+			<h4><strong>2023, 10 weeks</strong></h4>
+
+
+
+
+
+			<iframe src="https://player.vimeo.com/video/935802578?h=3b1c6eb2dd" width="960" height="540" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms" class="videoSize"></iframe>
+			<div class="theProject">
+
+				<div class="aboutProject">
+					<div class="project">
+						<h3>Project Brief</h3>
+						<p>Urban parking can be a stressful and time-consuming experience. Drivers often struggle to find vacant spots, leading to frustration and wasted fuel. This project aimed to address these challenges by designing a mobile application that simplifies parking in city centers.
+						</p>
+
+						<h3>The Problem</h3>
+						<p>Difficulty finding available parking spaces
+							Lack of clear information about parking restrictions and availability
+							Stressful experience searching for parking, leading to traffic congestion and pollution.</p>
+
+						<h3>The Goal</h3>
+						<p>Develop a user-friendly mobile application that helps drivers locate and book parking spots, improving the overall parking experience and reducing traffic congestion.
+						</p>
+					</div>
+					<div class="team">
+						<h4>Team</h4>
+						<p>Group of 4 interaction design students with a shared resposibility of all aspects of the design.
+						</p>
+						<h4>Tools</h4>
+						<p><span class="pillBG">Figma</span>
+							<span class="pillBG">Miro</span>
+						</p>
+					</div>
+
+				</div>
+
+
+				<div>
+
+					<h2>The Process</h2>
+					<h3>User Research</h3>
+					<h4>Surveys</h4>
+					<p>We firstly conducted a survey to gather data on parking habits, frustrations, and to verify our notion that problems existed within parking.</p>
+
+					<h5>Key Findings of survey</h5>
+					<ul>
+						<li>Participants reported feeling stressed and frustrated about finding parking.</li>
+					</ul>
+
+
+					<h4>Future Workshop</h4>
+					<p>Held a future workshop with 8 participants to discuss parking challenges and brainstorm solutions. The 8 participants were divided into two groups of 4 participants.
+					</p>
+
+					<h5>Key Findings of future workshop</h5>
+					<ul>
+						<li><u>Informational Communication Issues</u>
+							<br>Difficulty finding clear and up-to-date information about parking availability, restrictions, and regulations.
+						</li>
+						<li><u>Parking Planning Difficulties</u>
+							<br>Challenges planning trips due to uncertainty about parking availability.
+						</li>
+						<li><u>City Planning Concerns</u>
+							<br>A desire for better city planning strategies to address parking limitations.
+						</li>
+						<li><u>Mobile Application Vision</u>
+							<br>Participants envisioned a mobile application that could help them:
+							<br>Locate available parking spots.
+							<br>Book parking in advance.
+							<br>Reduce stress and improve the overall parking experience.
+						</li>
+					</ul>
+
+
+
+
+
+
+					<br>
+					<h3>Data Analysis</h3>
+					<h4>Thematic Analysis</h4>
+					<p>The data gathered from the future workshop was thematically analysed and put into a affinity diagram, as shown below.</p>
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="images/parkeasy/AffinityDiagramFW.png" alt="">
+						</label>
+					</div>
+					<p>From this data we formulated a requirements list and what screens the app should have and from this we based our designs on.</p>
+				</div>
+
+				<br><br>
+				<h3>Design</h3>
+				<h4>Sketches</h4>
+				<p>The participant concluded in the last step of the workshop that some sort of application would be the best solution for the problems they have discussed, however if the application should be incorporated via an mobile application or via a user interface integrated within the vehicle differed at this stage in the two groups.</p>
+				<p>Features mentioned in the groups in regards to the UI were coherently leaning towards similar solutions. These were functions such as possibilities for pre-booking of parking, GPS services to guide the driver to a vacant parking space, managing payments as well as support and guidelines in regards to parking laws and regulations.</p>
+				<p>After the future workshop we asked the participants to sketch on a possible solution for what they have discussed, as shown below. </p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/parkeasy/participantsketches.png" alt="">
+					</label>
+					<p>Inital sketches done by future workshop participant.</p>
+				</div>
+
+				<p>From the participant sketches, we made our own sketch for the 'main' page of ParkEasy. To be able to create the rest of the 'pages' we also created a requirements list based on the data gathered.</p>
+
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/parkeasy/requirements.png" alt="">
+					</label>
+					<p>Requirements list.</p>
+				</div>
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/parkeasy/researchsketches.png" alt="">
+					</label>
+					<p>Our own sketches of the 'homepage'.</p>
+				</div>
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/parkeasy/othersketches.png" alt="">
+					</label>
+					<p>Sketches of the rest of the pages.</p>
+				</div>
+
+
+
+				<br><br>
+
+
+				<h4>Wireframes</h4>
+
+				<p>We moved into Figma to create the wireframes.</p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/parkeasy/Wireframes.png" alt="">
+					</label>
+					<p>Wireframes of ParkEasy.</p>
+				</div>
+
+				<br><br>
+
+				<h4>Mockup</h4>
+				<p>We created a graphical mockup of some of the pages to get a better feel for the aestethic of the app.</p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/parkeasy/mockup.png" alt="">
+					</label>
+					<p>Graphical mockup of ParkEasy.</p>
+				</div>
+
+
+				<br><br>
+
+				<h4>Interactive prototype</h4>
+				<p>Finally we created our interactive prototype, here we added all necessary interaction flows between the different pages.</p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/parkeasy/finishedprototype.png" alt="">
+					</label>
+					<p>Finished prototype of ParkEasy.</p>
+				</div>
+
+<br><br>
+
+
+				<iframe src="https://player.vimeo.com/video/935802578?h=3b1c6eb2dd" width="640" height="360" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms"></iframe>
+				<br><br>
+
+
+				<h1>Thank you for your time!</h1>
+			</div>
+		</section>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="copyright">
+				<li>&copy; Olle Lomberg Davegård</li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

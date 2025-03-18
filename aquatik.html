@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>OLLE LOMBERG DAVEGÅRD</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="index.html" class="image avatar"><img src="images/portrait2.jpg" alt="" /></a>
+			<h1><strong>Olle <br> Lomberg Davegård</strong>
+			</h1>
+			<br>
+			<div class="aboutMe">
+
+				<p id="firstAbout">INTERACTION DESIGNER <br>LINNÈUNIVERSITETET</p>
+				<br>
+
+				<h3 class="icon solid fa-envelope"><a href="mailto:olledavegardh@gmail.com"> olledavegardh@gmail.com</a></h3>
+				<h3 class="icon solid fa-mobile-alt"><a href="tel:+46707875298"> +46707875298</a></h3>
+				<h3 class="icon brands fa-linkedin"><a href="http://linkedin.com/in/olleld"> linkedin.com/in/olleld</a></h3>
+			</div>
+		</div>
+	</header>
+
+	<div class="line-container">
+		<svg id="wiggleSVG" viewBox="0 0 100 1000" preserveAspectRatio="xMidYMid slice">
+			<path id="wigglePath" d="" />
+		</svg>
+	</div>
+
+	<script>
+		const path = document.getElementById("wigglePath");
+		const numPoints = 230; // Controls smoothness of the curve
+		const pathHeight = 1000;
+		let wiggleAmount = 0;
+		let targetWiggle = 0;
+		let scrollSpeed = 0;
+		let lastScrollY = window.scrollY;
+
+		// Perlin noise function approximation (smooth, no jitter)
+		function perlinNoise(x) {
+			return Math.sin(x * 0.1) * 10 + Math.sin(x * 0.05) * 5;
+		}
+
+		function generatePath(amount) {
+			let points = [];
+			for (let i = 0; i < numPoints; i++) {
+				let wave = perlinNoise(i + performance.now() / 30); // Large smooth waves
+				let x = 50 + wave * amount;
+				let y = (i / (numPoints - 1)) * pathHeight;
+				points.push(`${x},${y}`);
+			}
+			path.setAttribute("d", `M${points.join(" L")}`);
+		}
+
+		function animate() {
+			// Gradual transition
+			wiggleAmount += (targetWiggle - wiggleAmount) * 0.02;
+			generatePath(wiggleAmount);
+			requestAnimationFrame(animate);
+		}
+
+		// Start animation loop
+		animate();
+
+		window.addEventListener("scroll", () => {
+			let deltaY = Math.abs(window.scrollY - lastScrollY);
+			lastScrollY = window.scrollY;
+
+			scrollSpeed = deltaY; // Use scroll speed to adjust wiggle
+			targetWiggle = Math.min(scrollSpeed / 5, 4); // Limit wave intensity
+			clearTimeout(scrollSpeed);
+
+			scrollSpeed = setTimeout(() => {
+				targetWiggle = 0; // Smoothly return to straight line
+			}, 300);
+		});
+	</script>
+
+
+	<!-- Main -->
+	<div id="main">
+
+		<!-- One -->
+		<section id="one">
+			<div class="text-container">
+				<a href="index.html">
+					<span class="material-symbols-sharp back-arrow">
+						arrow_back
+					</span>
+					<h1><strong>Aquatik</strong></h1>
+				</a>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two">
+			<h4><strong>2023, 10 weeks</strong></h4>
+
+
+
+
+
+			<iframe src="https://player.vimeo.com/video/932816565?h=22e71cd1d3" width="960" height="540" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms" class="videoSize"></iframe>
+			<div class="theProject">
+
+				<div class="aboutProject">
+					<div class="project">
+						<h3>Project Brief</h3>
+						<p>Aquatik is a smart water bowl system designed to give pet owners peace of mind by helping them monitor their pet's hydration.</p>
+
+						<h3>The Problem</h3>
+						<p>Pet owners often struggle to track their pet's water consumption. Insufficient water intake can lead to health problems in animals. The current market lacks user-friendly products that help pet owners monitor their pet's hydration.</p>
+
+						<h3>The Goal</h3>
+						<p>Design an innovative water bowl with integrated features that provide pet owners with better insight into their pet's water intake.
+						</p>
+					</div>
+					<div class="team">
+						<h4>Team</h4>
+						<p>Group of 5 interaction design students with a shared resposibility of all aspects of the design.
+						</p>
+						<h4>Tools</h4>
+						<p><span class="pillBG">Figma</span>
+							<span class="pillBG">Miro</span>
+							<span class="pillBG">Blender</span>
+						</p>
+					</div>
+
+				</div>
+
+
+				<div>
+
+					<h2>The Process</h2>
+					<h3>User Research</h3>
+					<h4>Surveys</h4>
+					<p>Questionnaires were distributed to pet owners to understand their struggles and desired features in a water bowl system.</p>
+
+					<h4>Expert Interviews</h4>
+					<p>Pet store staff provided valuable insights into market trends and existing products.</p>
+
+					<h4>Key Findings</h4>
+					<p>
+						<li>Pet owners worry about hydration but struggle to track water intake.</li>
+						<li>Existing water bowls lack features and user-friendliness.</li>
+						<li>Market gap exists for a user-friendly pet hydration solution.</li>
+					</p>
+<br>
+					<h3>Data Analysis</h3>
+					<h4>Thematic Analysis</h4>
+					<p>Information from surveys and interviews was analyzed to identify recurring themes and user needs.</p>
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="images/aquatik/thematic_analysis.png" alt="">
+						</label>
+					</div>
+					<p>The key findings from analysing our data was that the respondents all wanted a system of a physical product and an app that are connected to the physical product.
+						Based on these insights, we created a list of requirements and defined the key app screens, which guided our design decisions.</p>
+				</div>
+
+<br><br><br>
+				<h3>Design</h3>
+				<h4>Sketches</h4>
+				<p>We started out by sketching a low fidelity prototype of an app by letting each member of the group sketch a couple of variants of a design, then we presented the sketches to each other and voted on the ones we liked the most.</p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/aquatik/1registrera_koppla_skisser.png" alt="">
+					</label>
+					<p>Sketches of registration and bluetooth connection.</p>
+				</div>
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/aquatik/2startsida_specifikt_husdjur.png" alt="">
+					</label>
+					<p>Sketches of the main page and on the "specific pet" page.</p>
+				</div>
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/aquatik/3hälsosidan_skisser.png" alt="">
+					</label>
+					<p>Sketches of the "Health" page.</p>
+				</div>
+
+
+
+
+<br><br>
+
+
+				<h4>Wireframes</h4>
+
+				<p>We moved into Figma to create the wireframes to get a better understanding of the flow of the app and a more structured visualization of the layout.</p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/aquatik/wireframes.png" alt="">
+					</label>
+					<p>Wireframe of Aquatik, here the flow of the app is starting to become apparent.</p>
+				</div>
+
+<br><br>
+
+				<h4>Mockup</h4>
+				<p>We created graphical mockups to establish the app's aesthetic and ensure a cohesive visual style.</p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/aquatik/mockup.png" alt="">
+					</label>
+					<p>Graphical mockup of Aquatik.</p>
+				</div>
+
+
+<br><br>
+
+				<h4>Interactive prototype</h4>
+				<p>The final step was to make the prototype interactive by adding the necessary transitions between pages, creating a more immersive experience of the app.</p>
+				<p>This was also necessary to be able to evaluate and test the design.</p>
+
+				<iframe src="https://player.vimeo.com/video/933710075?h=7c0f3dd7ac" width="640" height="360" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms"></iframe>
+<br><br>
+				<h3>Testing</h3>
+				<h4>Heuristic evaluation</h4>
+				<p>Due to project constraints, we couldn't conduct extensive user testing. Instead, we performed a heuristic evaluation using Nielsen's 10 Usability Heuristics.</p>
+
+				<p>
+				<ul>
+					<strong>Key Findings</strong>
+					<li>Improve pet profile creation</li>
+					<li>Personalize the user experience</li>
+					<li>Enhance navigation for managing multiple pets</li>
+					<li>Organize saved health information</li>
+				</ul>
+				</p>
+<br>
+				<h4>SUS</h4>
+				<p>A SUS (System Usability Scale) is often used due to it being a "quick and dirty" way of testing systems while also being low cost. This suited our project perfectly.
+					<br> Below are our results from the SUS.
+				</p>
+				<p>
+				<ul>
+					<strong>Individual Test Scores</strong>
+					<li>User Test 1: <strong>97.5</strong></li>
+					<li>User Test 2: <strong>75</strong></li>
+					<li>User Test 3: <strong>72.5</strong></li>
+				</ul>
+				</p>
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/aquatik/sus.jpeg" alt="">
+					</label>
+				</div>
+
+				<p>
+				<ul>
+					<strong>Key Findings</strong>
+					<li>Users were generally satisfied with the app and found it easy to use.</li>
+					<li>Some minor usability issues were identified, such as difficulty finding certain buttons and interpreting graphs.</li>
+				</ul>
+				</p>
+
+				<p>
+				<ul>
+					<strong>Improvements to be made</strong>
+					<li>Improving button visibility and labeling.</li>
+					<li>Using a line graph instead of a bar graph for water consumption data.</li>
+					<li>Adding an average daily water consumption indicator.</li>
+					<li>Clarifying the icon for bookmarking articles.</li>
+					<p>
+						<i>Note: The SUS evaluation was conducted at the end of the development process as a summative evaluation, so there was no time to implement the identified changes before submitting the project.</i>
+					</p>
+				</ul>
+				</p>
+
+
+				<h3>Physical product</h3>
+				<p>As part of the course, we were also tasked with designing a physical prototype connected to the digital app. <br>
+					Here we were given more "creative freedom" in how it should work and looked. We weren't required to test the prototype or actually create it physically. <br>
+					We settled on some sort of water bowl for pets based on the answers from our inital survey.
+					Since I have experience in 3D I took charge of creating a 3D prototype of a physical product that we together made inital sketches out of, as shown below.</p>
+
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/aquatik/sketches_physical.png" alt="">
+					</label>
+					<p>Sketches of a physical water bowl.</p>
+				</div>
+<br><br>
+				<p>After discussing the different designs we settled on a design that we could iterate on and then moved on into Blender for creating the 3D prototype.</p>
+
+
+
+<br><br>
+<h4>3D Renderings of the physical product.</h4>
+<br>
+				<iframe src="https://player.vimeo.com/video/933742728?h=803e4b693d" width="640" height="360" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms"></iframe>
+
+<br><br><br>
+
+
+				<div class="projectImages click-zoom">
+
+					<label>
+						<input type='checkbox' />
+						<img src="images/aquatik/StudioWood.png" alt="">
+					</label>
+				</div>
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/aquatik/StudioBlue.png" alt="">
+					</label>
+				</div>
+				<div class="projectImages click-zoom">
+					<label>
+						<input type='checkbox' />
+						<img src="images/aquatik/StudioWhite.png" alt="">
+					</label>
+				</div>
+
+
+				<h1>Thank you for your time!</h1>
+			</div>
+		</section>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="copyright">
+				<li>&copy; Olle Lomberg Davegård</li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
