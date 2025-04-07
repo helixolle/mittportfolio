@@ -2244,7 +2244,7 @@ input[type="radio"]+label:before {
 	display: inline-block;
 	margin: 2px 1px;
 	border-radius: 20px;
-  }
+}
 
 
 
@@ -2582,6 +2582,13 @@ ul.actions.fit.stacked {
 }
 
 /* Table */
+.table-wrapper1 {
+
+}
+
+
+
+
 
 .table-wrapper {
 	-webkit-overflow-scrolling: touch;
@@ -2865,7 +2872,7 @@ input[type="button"]:disabled,
 
 .theProject p {
 	font-family: "PT Sans";
-padding-left: 0.5em;
+	padding-left: 0.5em;
 }
 
 .theProject h3 {

@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>OLLE LOMBERG DAVEGÅRD</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="index.html" class="image avatar"><img src="images/portrait2.jpg" alt="" /></a>
+			<h1><strong>Olle <br> Lomberg Davegård</strong>
+			</h1>
+			<br>
+			<div class="aboutMe">
+
+				<p id="firstAbout">INTERACTION DESIGNER <br>LINNÈUNIVERSITETET</p>
+				<br>
+
+				<h3 class="icon solid fa-envelope"><a href="mailto:olledavegardh@gmail.com"> olledavegardh@gmail.com</a></h3>
+				<h3 class="icon solid fa-mobile-alt"><a href="tel:+46707875298"> +46707875298</a></h3>
+				<h3 class="icon brands fa-linkedin"><a href="http://linkedin.com/in/olleld"> linkedin.com/in/olleld</a></h3>
+			</div>
+		</div>
+	</header>
+
+	<div class="line-container">
+		<svg id="wiggleSVG" viewBox="0 0 100 1000" preserveAspectRatio="xMidYMid slice">
+			<path id="wigglePath" d="" />
+		</svg>
+	</div>
+
+	<script>
+		const path = document.getElementById("wigglePath");
+		const numPoints = 230; // Controls smoothness of the curve
+		const pathHeight = 1000;
+		let wiggleAmount = 0;
+		let targetWiggle = 0;
+		let scrollSpeed = 0;
+		let lastScrollY = window.scrollY;
+
+		// Perlin noise function approximation (smooth, no jitter)
+		function perlinNoise(x) {
+			return Math.sin(x * 0.1) * 10 + Math.sin(x * 0.05) * 5;
+		}
+
+		function generatePath(amount) {
+			let points = [];
+			for (let i = 0; i < numPoints; i++) {
+				let wave = perlinNoise(i + performance.now() / 30); // Large smooth waves
+				let x = 50 + wave * amount;
+				let y = (i / (numPoints - 1)) * pathHeight;
+				points.push(`${x},${y}`);
+			}
+			path.setAttribute("d", `M${points.join(" L")}`);
+		}
+
+		function animate() {
+			// Gradual transition
+			wiggleAmount += (targetWiggle - wiggleAmount) * 0.02;
+			generatePath(wiggleAmount);
+			requestAnimationFrame(animate);
+		}
+
+		// Start animation loop
+		animate();
+
+		window.addEventListener("scroll", () => {
+			let deltaY = Math.abs(window.scrollY - lastScrollY);
+			lastScrollY = window.scrollY;
+
+			scrollSpeed = deltaY; // Use scroll speed to adjust wiggle
+			targetWiggle = Math.min(scrollSpeed / 5, 4); // Limit wave intensity
+			clearTimeout(scrollSpeed);
+
+			scrollSpeed = setTimeout(() => {
+				targetWiggle = 0; // Smoothly return to straight line
+			}, 300);
+		});
+	</script>
+
+
+	<!-- Main -->
+	<div id="main">
+
+		<!-- One -->
+		<section id="one">
+			<div class="text-container">
+				<a href="index.html">
+					<span class="material-symbols-sharp back-arrow">
+						arrow_back
+					</span>
+					<h1><strong>AR-Navigation</strong></h1>
+				</a>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two">
+			<h4><strong>2024, 10 weeks</strong></h4>
+
+
+			<iframe src="https://player.vimeo.com/video/1067061936?h=2b486daf3b" width="960" height="540" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms" class="videoSize"></iframe>
+			<div class="theProject">
+
+				<div class="aboutProject">
+					<div class="project">
+						<h3>Project Brief</h3>
+						<p>Navigating large public indoor spaces like libraries can be challenging, especially for people with cognitive impairments. This project explored how Augmented Reality (AR) could improve wayfinding in such environments by providing real-time visual guidance directly through the user’s smartphone camera.
+							<br>
+							The project focused on Göteborg City Library as a case study and aimed to reduce cognitive load by offering an alternative to static maps and traditional signage.
+						</p>
+
+						<h3>The Problem</h3>
+						<p>
+						<ul>
+							<li>Users with cognitive challenges often struggle to process static signs and complex visual information.</li>
+							<li>Existing wayfinding systems in libraries rely heavily on reading and interpretation.</li>
+							<li>Cognitive overload from too much information reduces focus and increases stress during navigation.</li>
+						</ul>
+						</p>
+
+						<h3>The Goal</h3>
+						<p>
+						<ul>Develop a conceptual AR navigation system designed to:
+							<li>Reduce cognitive load during wayfinding</li>
+							<li>Provide clear, visual cues in real-time</li>
+							<li>Support independent navigation within the library</li>
+						</ul>
+						</p>
+					</div>
+					<div class="team">
+						<h4>Team</h4>
+						<p>Individual project
+						</p>
+						<h4>Tools</h4>
+						<p><span class="pillBG">Figma</span>
+							<span class="pillBG">Bezi</span>
+							<span class="pillBG">Adobe Illustrator</span>
+						</p>
+					</div>
+
+				</div>
+
+
+				<div>
+
+					<h2>The Process</h2>
+					<h3>User Research</h3>
+					<h4>User Interviews</h4>
+					<p>Semi-structured interviews were conducted with two participants: one with ADHD and one with dyslexia.</p>
+
+					<h5>Key Insights</h5>
+					<ul>
+						<li>Both struggled with focusing on or processing signage in public spaces.</li>
+						<li>Overloaded visual environments made it hard to "filter" relevant information.</li>
+						<li>Both relied on asking for help or using tools like Google Lens as coping strategies.</li>
+						<li>Color-coded cues and symbols were preferred over text-heavy information.</li>
+					</ul>
+
+
+					<h4>Literature Review</h4>
+					<p>The research included studies on AR navigation, cognitive accessibility, and indoor wayfinding. Findings highlighted AR’s potential to deliver clear, real-time directional cues while minimizing cognitive strain.
+					</p>
+
+
+
+					<h3>Requirements</h3>
+					<p>Based on the research, the following key features were defined:</p>
+					
+					
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="images/ar-navigation/req_table.png" alt="">
+						</label>
+					</div>
+					
+					
+	
+					</div>
+					<br>
+
+					<br><br>
+					<h3>Design</h3>
+					<h4>Sketches & Wireframes</h4>
+					<p>Initial sketches and wireframes were created to visualize a simple, low-cognitive-load interface. Focus was placed on clear AR overlays and minimal navigation steps.</p>
+
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="images/ar-navigation/sketches.png" alt="">
+						</label>
+						<p>Rough sketches.</p>
+					</div>
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="images/ar-navigation/wireframe.png" alt="">
+						</label>
+						<p>Simple wireframes.</p>
+					</div>
+
+
+
+
+					<h4>Prototype</h4>
+					<ul>A clickable prototype was built in Figma with AR elements simulated using Bezi for 3D visualization. The prototype featured:
+						<li>Destination selection</li>
+						<li>AR arrow guidance</li>
+						<li>Distance indicators</li>
+						<li>Arrival feedback</li>
+					</ul>
+					<div class="projectImages click-zoom">
+						<label>
+							<input type='checkbox' />
+							<img src="images/ar-navigation/mockup.png" alt="">
+						</label>
+						<p>Mockup of prototype.</p>
+					</div>
+
+
+					<h3>User Testing</h3>
+					<p>The prototype was tested by one user from the target group (ADHD) in a scenario where they navigated to the "Music and Movies" section of the library.</p>
+					<ul>Findings:
+						<li>The AR arrow guidance was intuitive and easy to follow</li>
+						<li>User felt less stressed compared to interpreting signs</li>
+						<li>Concept was perceived as especially useful in complex environments</li>
+						<li>The prototype was basic – future iterations should include more dynamic scenarios and test users</li>
+					</ul>
+
+
+					<h3>Reflections & Learning</h3>
+					<ul>While the prototype was simple, this project proved that AR-based navigation can:
+						<li>Support users with cognitive impairments</li>
+						<li>Minimize the need to process text-heavy information</li>
+						<li>Enhance independence in public spaces like libraries</li>
+					</ul>
+					<ul>Future work could explore:
+						<li>Integrating tactile cues with AR</li>
+						<li>Scaling the prototype for larger, more complex buildings</li>
+						<li>Broader user testing to refine accessibility features</li>
+					</ul>
+
+
+					<h3>Conclusion</h3>
+					<p>This project demonstrated the potential of AR navigation to improve cognitive accessibility in public indoor environments. By combining user research, literature insights, and a proof-of-concept prototype, the project laid a foundation for future development of user-centered AR navigation tools that reduce cognitive load and enhance wayfinding for everyone.</p>
+
+
+					<br><br>
+
+
+					<iframe src="https://player.vimeo.com/video/1067061936?h=2b486daf3b" width="640" height="360" frameborder="0" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms"></iframe>
+					<br><br>
+
+
+					<h1>Thank you for your time!</h1>
+				</div>
+		</section>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="copyright">
+				<li>&copy; Olle Lomberg Davegård</li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
